@@ -14,7 +14,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,14 +32,14 @@
       --shadow: 0 4px 24px rgba(27, 67, 50, 0.13);
       --shadow-lg: 0 8px 40px rgba(27, 67, 50, 0.18);
       --radius: 20px;
-      --nav-height: 72px;
+      --nav-height: 56px;
       --safe-bottom: env(safe-area-inset-bottom, 0px);
     }
 
     html, body { height: 100%; overflow-x: hidden; background: var(--forest); }
 
     body {
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Quicksand', sans-serif;
       color: var(--forest);
       min-height: 100dvh;
       background-color: var(--forest);
@@ -62,65 +62,51 @@
     /* ── HEADER ── */
     .header {
       background: linear-gradient(160deg, var(--forest) 0%, #2D6A4F 100%);
-      padding: 48px 20px 24px;
-      padding-top: calc(48px + env(safe-area-inset-top, 0px));
+      padding: 10px 16px 10px;
+      padding-top: calc(10px + env(safe-area-inset-top, 0px));
       color: var(--cream);
       position: relative;
       overflow: hidden;
       flex-shrink: 0;
     }
 
-    .header::before {
-      content: '';
-      position: absolute;
-      top: -40px; right: -40px;
-      width: 180px; height: 180px;
-      background: radial-gradient(circle, rgba(132,169,140,0.3) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
     .header-top {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 6px;
+      align-items: center;
     }
 
     .app-title {
       font-family: 'Playfair Display', serif;
-      font-size: 34px;
+      font-size: 22px;
       font-weight: 700;
       color: var(--cream);
-      letter-spacing: -0.5px;
+      letter-spacing: -0.3px;
       line-height: 1.1;
     }
 
     .app-subtitle {
-      font-size: 13px;
+      font-size: 11px;
       color: var(--sage-light);
       font-weight: 500;
-      margin-top: 2px;
+      margin-top: 1px;
     }
 
-    .header-right {
-      text-align: right;
+    /* Logo circle */
+    .header-logo {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: #339966;
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 3px;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.25);
     }
 
-    .connection-status {
-      font-size: 13px;
-      line-height: 1;
-      cursor: default;
-    }
-
-    .header-date {
-      font-size: 12px;
-      color: var(--sage-light);
-      font-weight: 600;
+    .header-logo svg {
+      width: 30px; height: 30px;
+      display: block;
     }
 
     .summary-badge {
@@ -130,11 +116,11 @@
       background: rgba(255,140,105,0.22);
       border: 1px solid rgba(255,140,105,0.45);
       color: #FFB347;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
-      padding: 5px 12px;
+      padding: 4px 10px;
       border-radius: 20px;
-      margin-top: 12px;
+      margin-top: 6px;
     }
 
     .summary-badge.hidden { display: none; }
@@ -169,15 +155,15 @@
       flex: 1;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
-      padding: 20px 16px;
-      padding-bottom: calc(var(--nav-height) + var(--safe-bottom) + 20px);
+      padding: 14px 14px;
+      padding-bottom: calc(var(--nav-height) + var(--safe-bottom) + 14px);
       background: var(--cream);
-      border-radius: 28px 28px 0 0;
+      border-radius: 20px 20px 0 0;
       margin-top: -2px;
     }
 
     .main.selection-active {
-      padding-bottom: calc(var(--nav-height) + var(--safe-bottom) + 88px);
+      padding-bottom: calc(var(--nav-height) + var(--safe-bottom) + 66px);
     }
 
     .main::-webkit-scrollbar { width: 0; }
@@ -264,7 +250,7 @@
       border-radius: 10px;
       border: 1.5px solid rgba(82,121,111,0.25);
       background: var(--white);
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Quicksand', sans-serif;
       font-size: 11px;
       font-weight: 700;
       color: var(--sage);
@@ -287,7 +273,7 @@
       border: none;
       background: linear-gradient(135deg, #006994, #0096C7);
       color: white;
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Quicksand', sans-serif;
       font-size: 14px;
       font-weight: 800;
       cursor: pointer;
@@ -625,7 +611,7 @@
       left: 50%; transform: translateX(-50%);
       width: 100%; max-width: 430px;
       background: var(--forest);
-      padding: 10px 16px 12px;
+      padding: 7px 14px 8px;
       z-index: 99;
       border-top: 1px solid rgba(132,169,140,0.2);
       display: none;
@@ -633,36 +619,36 @@
 
     .selection-count {
       color: var(--sage-light);
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       text-align: center;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       letter-spacing: 0.3px;
     }
 
-    .selection-actions { display: flex; gap: 10px; }
+    .selection-actions { display: flex; gap: 8px; }
 
     .btn-annuler {
-      padding: 12px 16px;
-      border-radius: 12px;
+      padding: 9px 14px;
+      border-radius: 10px;
       border: 1px solid rgba(132,169,140,0.3);
       background: transparent;
       color: var(--sage-light);
-      font-family: 'Nunito', sans-serif;
-      font-size: 13px; font-weight: 700;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 12px; font-weight: 700;
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
     }
 
     .btn-water-sel {
       flex: 1;
-      padding: 12px;
-      border-radius: 12px;
+      padding: 9px;
+      border-radius: 10px;
       border: none;
       background: linear-gradient(135deg, #2D6A4F, var(--sage));
       color: white;
-      font-family: 'Nunito', sans-serif;
-      font-size: 13px; font-weight: 800;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 12px; font-weight: 700;
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
       transition: opacity 0.2s;
@@ -695,7 +681,7 @@
       border-radius: 14px;
       border: 2px solid rgba(82,121,111,0.22);
       background: var(--white);
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Quicksand', sans-serif;
       font-size: 16px; font-weight: 600;
       color: var(--forest);
       outline: none;
@@ -769,7 +755,7 @@
       border: none;
       margin-top: 8px;
       cursor: pointer;
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Quicksand', sans-serif;
       display: none;
       -webkit-tap-highlight-color: transparent;
     }
@@ -844,7 +830,7 @@
       border: none;
       background: linear-gradient(135deg, var(--forest), #2D6A4F);
       color: var(--cream);
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Quicksand', sans-serif;
       font-size: 17px; font-weight: 800;
       cursor: pointer;
       transition: transform 0.15s ease, box-shadow 0.15s;
@@ -865,6 +851,7 @@
       -webkit-backdrop-filter: blur(16px);
       border-top: 1px solid rgba(132,169,140,0.2);
       display: flex;
+      align-items: stretch;
       height: calc(var(--nav-height) + var(--safe-bottom));
       padding-bottom: var(--safe-bottom);
       z-index: 100;
@@ -876,13 +863,13 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 4px;
+      gap: 3px;
       background: none; border: none;
       cursor: pointer;
-      padding: 10px 0;
+      padding: 6px 0;
       color: var(--sage-light);
-      font-family: 'Nunito', sans-serif;
-      font-size: 11px; font-weight: 700;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 10px; font-weight: 700;
       letter-spacing: 0.3px;
       transition: color 0.2s;
       -webkit-tap-highlight-color: transparent;
@@ -891,12 +878,54 @@
     .nav-item.active { color: var(--cream); }
 
     .nav-icon {
-      font-size: 22px;
+      font-size: 20px;
       line-height: 1;
       transition: transform 0.2s ease;
     }
 
-    .nav-item.active .nav-icon { transform: scale(1.15); }
+    .nav-item.active .nav-icon { transform: scale(1.12); }
+
+    /* FAB-style Add button */
+    .nav-item-fab {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      background: none; border: none;
+      cursor: pointer;
+      padding: 6px 0;
+      color: var(--sage-light);
+      font-family: 'Quicksand', sans-serif;
+      font-size: 10px; font-weight: 700;
+      -webkit-tap-highlight-color: transparent;
+      transition: color 0.2s;
+    }
+
+    .nav-item-fab.active { color: var(--cream); }
+
+    .fab-circle {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: #339966;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 3px 10px rgba(51,153,102,0.45);
+      transition: transform 0.15s ease, box-shadow 0.15s;
+    }
+
+    .nav-item-fab:active .fab-circle {
+      transform: scale(0.9);
+      box-shadow: 0 1px 6px rgba(51,153,102,0.3);
+    }
+
+    .fab-circle svg {
+      width: 20px; height: 20px;
+      stroke: white;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      fill: none;
+    }
 
     /* ── DIALOGS ── */
     .dialog-overlay {
@@ -953,7 +982,7 @@
       border-radius: 14px;
       border: 2px solid rgba(82,121,111,0.25);
       background: var(--white);
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Quicksand', sans-serif;
       font-size: 15px; font-weight: 700;
       color: var(--sage); cursor: pointer;
       -webkit-tap-highlight-color: transparent;
@@ -963,7 +992,7 @@
       flex: 1; padding: 14px;
       border-radius: 14px; border: none;
       background: #e53935;
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Quicksand', sans-serif;
       font-size: 15px; font-weight: 700;
       color: white; cursor: pointer;
       -webkit-tap-highlight-color: transparent;
@@ -973,7 +1002,7 @@
       flex: 1; padding: 14px;
       border-radius: 14px; border: none;
       background: linear-gradient(135deg, #006994, #0096C7);
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Quicksand', sans-serif;
       font-size: 15px; font-weight: 700;
       color: white; cursor: pointer;
       -webkit-tap-highlight-color: transparent;
@@ -1105,9 +1134,22 @@
         <div class="app-title">Plantologie</div>
         <div class="app-subtitle">Votre compagnon de jardinage</div>
       </div>
-      <div class="header-right">
-        <span class="connection-status" id="connectionDot" title="Synchronisation">⚫</span>
-        <div class="header-date" id="headerDate"></div>
+      <div class="header-logo" aria-hidden="true">
+        <!-- Potted plant: pot + stem + two leaves -->
+        <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <!-- Pot body -->
+          <path d="M10 20 L11.5 26 L18.5 26 L20 20 Z" fill="white" opacity="0.9"/>
+          <!-- Pot rim -->
+          <rect x="9" y="18.5" width="12" height="2" rx="1" fill="white"/>
+          <!-- Stem -->
+          <line x1="15" y1="18.5" x2="15" y2="11" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+          <!-- Left leaf -->
+          <path d="M15 15 C15 15 9 13 8 8 C11 8 15 11 15 15Z" fill="white"/>
+          <!-- Right leaf -->
+          <path d="M15 13 C15 13 21 11 22 6 C19 6 15 9 15 13Z" fill="white"/>
+          <!-- Top bud -->
+          <path d="M15 11 C15 11 13 8 14 5 C16 6 16 9 15 11Z" fill="white" opacity="0.85"/>
+        </svg>
       </div>
     </div>
     <div class="summary-badge hidden" id="summaryBadge">
@@ -1210,8 +1252,10 @@
       <span class="nav-icon">🌿</span>
       <span>Mes plantes</span>
     </button>
-    <button class="nav-item" id="navAdd" onclick="switchView('add')">
-      <span class="nav-icon">➕</span>
+    <button class="nav-item-fab" id="navAdd" onclick="switchView('add')">
+      <div class="fab-circle">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </div>
       <span>Ajouter</span>
     </button>
   </nav>
@@ -1369,10 +1413,7 @@
   }
 
   function setOnlineStatus(online) {
-    var dot    = document.getElementById('connectionDot');
     var banner = document.getElementById('offlineBanner');
-    dot.textContent = online ? '🟢' : '🔴';
-    dot.title = online ? 'Synchronisé en temps réel' : 'Hors ligne';
     banner.style.display = (isFirebaseReady && !online) ? 'block' : 'none';
   }
 
@@ -1456,12 +1497,6 @@
 
   // ── HEADER ─────────────────────────────────────────
   function renderHeader() {
-    var now    = new Date();
-    var days   = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
-    var months = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
-    document.getElementById('headerDate').textContent =
-      days[now.getDay()] + ' ' + now.getDate() + ' ' + months[now.getMonth()];
-
     var overdue = plants.filter(function(p) { return urgency(p) === 'overdue'; });
     var soon    = plants.filter(function(p) { return urgency(p) === 'soon'; });
     var badge   = document.getElementById('summaryBadge');
@@ -2015,7 +2050,12 @@
     document.getElementById('viewPlants').classList.toggle('active', view === 'plants');
     document.getElementById('viewAdd').classList.toggle('active', view === 'add');
     document.getElementById('navPlants').classList.toggle('active', view === 'plants');
-    document.getElementById('navAdd').classList.toggle('active', view === 'add');
+    // navAdd uses nav-item-fab; toggle active class same way
+    var navAdd = document.getElementById('navAdd');
+    navAdd.classList.toggle('active', view === 'add');
+    // Tint the FAB circle when on Add view
+    var fab = navAdd.querySelector('.fab-circle');
+    if (fab) fab.style.background = view === 'add' ? '#52796F' : '#339966';
     if (view === 'add') {
       buildEmojiGrid();
       setTimeout(function() { document.getElementById('plantNameInput').focus(); }, 300);
