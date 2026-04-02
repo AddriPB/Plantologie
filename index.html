@@ -1320,27 +1320,42 @@
       firebase.initializeApp(FIREBASE_CONFIG);
       var db = firebase.database();
       
-      // --- AJOUT DE VOTRE SÉCURITÉ ---
-      var monCodeSecret = "AZE"; // Remplacez par un code à vous (ex: "MaisonPlantes2024")
-      plantsRef = db.ref(monCodeSecret + '/plants'); 
-      // -------------------------------
-      
-      isFirebaseReady = true;
+      // --- SYSTÈME DE CODE SECRET (PROMPT + MÉMOIRE) ---
+      var monCodeSecret = localStorage.getItem('plantologie_key');
 
-      db.ref('.info/connected').on('value', function(snap) {
-        setOnlineStatus(!!snap.val());
-      });
+      if (!monCodeSecret) {
+        monCodeSecret = prompt("🔑 Sécurité : Entrez votre code secret pour synchroniser vos plantes :");
+        if (monCodeSecret) {
+          localStorage.setItem('plantologie_key', monCodeSecret);
+        }
+      }
 
-      plantsRef.on('value', function(snap) {
-        var data = snap.val() || {};
-        plants = Object.values(data);
-        localStorage.setItem('plantologie_plants', JSON.stringify(plants));
-        if (!animating) renderPlants();
-      }, function() {
+      if (monCodeSecret) {
+        plantsRef = db.ref(monCodeSecret + '/plants');
+        isFirebaseReady = true;
+
+        db.ref('.info/connected').on('value', function(snap) {
+          setOnlineStatus(!!snap.val());
+        });
+
+        plantsRef.on('value', function(snap) {
+          var data = snap.val() || {};
+          plants = Object.values(data);
+          localStorage.setItem('plantologie_plants', JSON.stringify(plants));
+          if (!animating) renderPlants();
+        }, function() {
+          setOnlineStatus(false);
+          loadLocal();
+          renderPlants();
+        });
+      } else {
+        // Si aucun code n'est saisi, on reste en local
         setOnlineStatus(false);
         loadLocal();
         renderPlants();
-      });
+      }
+      // ------------------------------------------------
+      
     } catch (e) {
       setOnlineStatus(false);
       loadLocal();
