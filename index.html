@@ -1309,7 +1309,7 @@
   var selectionMode    = false;
   var selectedIds      = new Set();
 
-  // ── FIREBASE INIT ──────────────────────────────────
+// ── FIREBASE INIT ──────────────────────────────────
   function initFirebase() {
     if (FIREBASE_CONFIG.apiKey === 'VOTRE_API_KEY') {
       loadLocal();
@@ -1319,7 +1319,12 @@
     try {
       firebase.initializeApp(FIREBASE_CONFIG);
       var db = firebase.database();
-      plantsRef = db.ref('plants');
+      
+      // --- AJOUT DE VOTRE SÉCURITÉ ---
+      var monCodeSecret = "AZE"; // Remplacez par un code à vous (ex: "MaisonPlantes2024")
+      plantsRef = db.ref(monCodeSecret + '/plants'); 
+      // -------------------------------
+      
       isFirebaseReady = true;
 
       db.ref('.info/connected').on('value', function(snap) {
